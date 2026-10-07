@@ -1,0 +1,28 @@
+# Topbanner 格式 1：standard（一般格式），媒體類型為影片
+# 對應 API_AI_Hair_Extension 曾做過的影片版本（原 V1）。素材目前還在舊流程的專案資料夾，尚未搬進新系統。
+block: topbanner
+variant: standard
+
+heading: "AI Hair Extension Virtual Try-On API"
+body: >-
+  Integrate highly realistic, AI-powered hair extension virtual try-ons into
+  your platform. Enable users to seamlessly preview customizable lengths,
+  styles, colors, and bangs on user-uploaded images via a streamlined REST API.
+
+ctas:
+  - label: "Contact Us"
+    href: "#"
+  - label: "API Documentation"
+    href: "#"
+
+media:
+  type: video          # 改成 image 就是「一般格式－圖片」，此時不需要 poster
+  dt:
+    file: assets/topbanner-media-dt.mp4
+    poster: assets/topbanner-poster-dt.jpg
+  pd:
+    file: assets/topbanner-media-pd.mp4
+    poster: assets/topbanner-poster-pd.jpg
+  mb:
+    file: assets/topbanner-media-mb.mp4
+    poster: assets/topbanner-poster-mb.jpg

@@ -1,0 +1,33 @@
+# Topbanner 複數選擇（評審版）範例：頁面出現 A/B 切換鈕，供內部比較兩個版本。
+# 這是「專案檔」裡一筆區塊設定的寫法（放在專案檔的 blocks: 底下），欄位說明見 docs/ARCHITECTURE.md。
+# 把 mode 改成 single、並用 use 指定一個候選，就變成只輸出該候選的正式版。
+block: topbanner
+mode: multiple            # single（預設）｜multiple
+options:                  # 候選代號只能是 a、b、c；複數選擇至少 2 個、最多 3 個
+  a:
+    label: "影片版"        # 中文名稱，只給人辨認，不會出現在頁面上
+    variant: standard
+    heading: "AI Hair Extension Virtual Try-On API"
+    body: >-
+      Integrate highly realistic, AI-powered hair extension virtual try-ons into
+      your platform.
+    ctas:
+      - label: "Contact Us"
+        href: "#"
+    media:
+      dt: {video: assets/topbanner-video-dt.mp4, poster: assets/topbanner-poster-dt.jpg}
+      pd: {video: assets/topbanner-video-pd.mp4, poster: assets/topbanner-poster-pd.jpg}
+      mb: {video: assets/topbanner-video-mb.mp4, poster: assets/topbanner-poster-mb.jpg}
+  b:
+    label: "拖曳比較版"
+    variant: before-after
+    heading: "AI Hair Extension Virtual Try-On API"
+    body: >-
+      Integrate highly realistic, AI-powered hair extension virtual try-ons into
+      your platform.
+    ctas:
+      - label: "Contact Us"
+        href: "#"
+    images:
+      before: {dt: assets/topbanner-before-dt.jpg, pd: assets/topbanner-before-pd.jpg, mb: assets/topbanner-before-mb.jpg}
+      after:  {dt: assets/topbanner-after-dt.jpg,  pd: assets/topbanner-after-pd.jpg,  mb: assets/topbanner-after-mb.jpg}

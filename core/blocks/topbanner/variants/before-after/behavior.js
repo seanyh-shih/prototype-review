@@ -59,13 +59,15 @@
     });
   }
 
+  // 頁面上可能有多個 Topbanner（例如複數選擇的多個候選），所以逐一初始化，不依賴固定 id
   document.addEventListener('DOMContentLoaded', function () {
-    var section = document.getElementById('topbanner');
-    var media = document.getElementById('topbannerMedia');
-    var handle = document.getElementById('topbannerHandle');
-    var clipLayer = media ? media.querySelector('.topbanner__img--after') : null;
-    if (section && media && handle && clipLayer) {
-      initCompare(media, handle, clipLayer, { hoverSection: section, hoverMinWidth: 1025 });
-    }
+    document.querySelectorAll('.topbanner--before-after').forEach(function (section) {
+      var media = section.querySelector('.topbanner__media');
+      var handle = section.querySelector('.topbanner__handle');
+      var clipLayer = section.querySelector('.topbanner__img--after');
+      if (media && handle && clipLayer) {
+        initCompare(media, handle, clipLayer, { hoverSection: section, hoverMinWidth: 1025 });
+      }
+    });
   });
 })();

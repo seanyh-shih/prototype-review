@@ -13,6 +13,12 @@
         variant: before-after
         ...
 
+區塊也可以是「複數選擇」（評審版，頁面出現切換鈕）：
+      - block: topbanner
+        mode: multiple                 # single｜multiple；single 要用 use 指定採用哪個候選
+        options:                       # 候選代號 a、b、c（至少 2 個、最多 3 個）
+          a: {label: 影片版, variant: standard, ...}
+          b: {label: 拖曳比較版, variant: before-after, ...}
 素材路徑相對於專案檔所在的資料夾。
 需要：Python 3.9+、PyYAML、jsonschema。
 """
@@ -191,54 +197,155 @@ def load_block_module(block_id):
     return mod
 
 
+def load_option_group():
+    path = REPO / "core" / "option-group" / "render.py"
+    spec = importlib.util.spec_from_file_location("option_group", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+WRAPPER_KEYS = {"block", "mode", "use", "options"}
+
+
+def expand_entry(content, label, problems, og):
+    """把專案檔裡的一筆區塊設定整理成 (模式, [(候選代號, 候選標籤, 區塊內容), ...])。
+
+    沒有 mode／options 的區塊：就是單一選擇，代號為 None。
+    mode: single   → 只取 use 指定的那個候選，不出現切換鈕。
+    mode: multiple → 取全部候選（a、b、c，最多 3 個、至少 2 個），出現切換鈕。
+    候選的內容格式與一般區塊相同（block 欄位由外層帶入），另可有 label（中文名稱，給人辨認）。
+    回傳 None 表示有問題（已記在 problems）。
+    """
+    if not isinstance(content, dict) or "block" not in content:
+        problems.append(f"{label}：缺少 block 欄位（區塊 ID，例如 topbanner）。")
+        return None
+    if "mode" not in content and "options" not in content and "use" not in content:
+        return ("single", [(None, None, content)])
+    block_id = content["block"]
+    where = f"{label}（{block_id}）"
+    extra = sorted(set(content) - WRAPPER_KEYS)
+    if extra:
+        problems.append(f"{where}：使用 mode／options 時，內容必須寫在各候選（options 底下）裡，不能直接寫在外層：{'、'.join(extra)}")
+        return None
+    mode = content.get("mode", "single")
+    if mode not in ("single", "multiple"):
+        problems.append(f"{where}：mode 必須是 single（單一選擇）或 multiple（複數選擇），目前是 {mode!r}。")
+        return None
+    options = content.get("options")
+    if not isinstance(options, dict) or not options:
+        problems.append(f"{where}：缺少 options（候選內容），格式為 a:、b:、c: 各一份。")
+        return None
+    bad = [k for k in options if k not in og.OPTION_CODES]
+    if bad:
+        problems.append(f"{where}：候選代號只能用 {'、'.join(og.OPTION_CODES)}，不認得：{'、'.join(map(str, bad))}。")
+        return None
+    codes = [c for c in og.OPTION_CODES if c in options]
+    for c in codes:
+        if not isinstance(options[c], dict):
+            problems.append(f"{where}：候選 {c} 的內容必須是一組「欄位: 值」。")
+            return None
+
+    def opt(c):
+        body = {k: v for k, v in options[c].items() if k != "label"}
+        body["block"] = block_id
+        return (c, options[c].get("label"), body)
+
+    if mode == "single":
+        use = content.get("use")
+        if use not in options:
+            problems.append(f"{where}：單一選擇必須用 use 指定採用哪一個候選（{'、'.join(codes)}），目前是 {use!r}。")
+            return None
+        return ("single", [opt(use)])
+    if "use" in content:
+        problems.append(f"{where}：複數選擇會輸出全部候選，不需要 use；若要只採用其中一個，請改成 mode: single。")
+        return None
+    if len(codes) < 2:
+        problems.append(f"{where}：複數選擇至少需要 2 個候選（目前只有 {len(codes)} 個）。只有一個版本請改用單一選擇。")
+        return None
+    return ("multiple", [opt(c) for c in codes])
+
+
+def render_one(content, label, ctx, problems, toggle=None):
+    """驗證並產生一個區塊內容的 HTML。回傳 (html, css 檔, js 檔)，有問題時回傳 None。"""
+    block_id = content["block"]
+    schema_path = REPO / "core" / "blocks" / block_id / "block.schema.json"
+    if not schema_path.exists():
+        problems.append(f"{label}：不認得的區塊「{block_id}」。")
+        return None
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    errors = sorted(Draft202012Validator(schema).iter_errors(content), key=lambda e: list(e.absolute_path))
+    if errors:
+        for line in format_errors(errors, content):
+            problems.append(f"{label}：{line}")
+        return None
+    mod = load_block_module(block_id)
+    if toggle and not getattr(mod, "SUPPORTS_TOGGLE", False):
+        problems.append(f"{label}：區塊「{block_id}」尚不支援複數選擇。")
+        return None
+    try:
+        result = mod.render(content, ctx, toggle=toggle) if toggle else mod.render(content, ctx)
+    except Exception as e:  # 區塊自己丟的 BlockError 等
+        problems.append(f"{label}：{e}")
+        return None
+    base = REPO / "core" / "blocks" / block_id
+    return result["html"], [base / r for r in result.get("css", [])], [base / r for r in result.get("js", [])]
+
+
 def render_blocks(project, brand_dir, brand_cfg, project_dir):
     ctx = Context(project_dir, brand_dir, brand_cfg.get("assets", []))
+    og = load_option_group()
     html_parts, css_files, js_files = [], [], []
     problems = []
-    for i, content in enumerate(project["blocks"], start=1):
-        label = f"第 {i} 個區塊"
-        if not isinstance(content, dict) or "block" not in content:
-            if isinstance(content, dict) and ("options" in content or "mode" in content):
-                problems.append(f"{label}：複數選擇（mode／options）尚未實作，預計在 Phase 1b 加入。")
-            else:
-                problems.append(f"{label}：缺少 block 欄位（區塊 ID，例如 topbanner）。")
-            continue
-        if "options" in content or "mode" in content:
-            problems.append(f"{label}（{content['block']}）：複數選擇（mode／options）尚未實作，預計在 Phase 1b 加入。")
-            continue
-        block_id = content["block"]
-        schema_path = REPO / "core" / "blocks" / block_id / "block.schema.json"
-        if not schema_path.exists():
-            problems.append(f"{label}：不認得的區塊「{block_id}」。")
-            continue
-        schema = json.loads(schema_path.read_text(encoding="utf-8"))
-        errors = sorted(Draft202012Validator(schema).iter_errors(content), key=lambda e: list(e.absolute_path))
-        if errors:
-            for line in format_errors(errors, content):
-                problems.append(f"{label}（{block_id}）：{line}")
-            continue
-        mod = load_block_module(block_id)
-        try:
-            result = mod.render(content, ctx)
-        except Exception as e:  # 區塊自己丟的 BlockError 等
-            problems.append(f"{label}（{block_id}）：{e}")
-            continue
-        html_parts.append(result["html"])
-        base = REPO / "core" / "blocks" / block_id
-        for rel in result.get("css", []):
-            p = base / rel
+    multiple_count = 0
+
+    def add_files(css, js):
+        for p in css:
             if p not in css_files:
                 css_files.append(p)
-        for rel in result.get("js", []):
-            p = base / rel
+        for p in js:
             if p not in js_files:
                 js_files.append(p)
+
+    for i, content in enumerate(project["blocks"], start=1):
+        label = f"第 {i} 個區塊"
+        expanded = expand_entry(content, label, problems, og)
+        if expanded is None:
+            continue
+        mode, options = expanded
+        block_id = content["block"]
+        if mode == "single":
+            code, opt_label, body = options[0]
+            suffix = f"（{block_id}" + (f"，候選 {code}" if code else "") + "）"
+            r = render_one(body, label + suffix, ctx, problems)
+            if r:
+                html_parts.append(r[0])
+                add_files(r[1], r[2])
+            continue
+        # 複數選擇
+        codes = [c for c, _, _ in options]
+        labels = {c: l for c, l, _ in options if l}
+        panes, ok = [], True
+        for code, _, body in options:
+            r = render_one(body, f"{label}（{block_id}，候選 {code}）", ctx, problems, toggle=og.toggles(codes, labels))
+            if r is None:
+                ok = False
+                continue
+            panes.append((code, r[0]))
+            add_files(r[1], r[2])
+        if ok:
+            html_parts.append(og.wrap(panes))
+            multiple_count += 1
     if problems:
         raise BuildError("內容有以下問題，請修正後再執行：\n  - " + "\n  - ".join(problems))
     missing = [a for a in ctx.project_assets if not (project_dir / a).is_file()]
     if missing:
         raise BuildError("找不到以下素材檔（路徑相對於專案檔所在資料夾）：\n  - " + "\n  - ".join(missing))
-    return html_parts, css_files, js_files, ctx
+    if multiple_count:
+        og_dir = REPO / "core" / "option-group"
+        css_files.append(og_dir / "style.css")
+        js_files.append(og_dir / "behavior.js")
+    return html_parts, css_files, js_files, ctx, multiple_count
 
 
 # ---------------------------------------------------------------- 輸出
@@ -246,7 +353,7 @@ def read_text(p):
     return p.read_text(encoding="utf-8")
 
 
-def write_output(out, project, brand_dir, brand_cfg, html_parts, css_files, js_files, ctx):
+def write_output(out, project, brand_dir, brand_cfg, html_parts, css_files, js_files, ctx, multiple_count=0):
     if out.exists():
         if not (out / MARKER).exists() and any(out.iterdir()):
             raise BuildError(
@@ -284,6 +391,9 @@ def write_output(out, project, brand_dir, brand_cfg, html_parts, css_files, js_f
                 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' + fonts
     title = escape(str(project.get("title") or project["project"]))
     body = "\n\n".join(html_parts)
+    if multiple_count:
+        body = (f'<div class="review-banner" data-review-banner>評審版：含 {multiple_count} 個比較區塊，'
+                f'不是正式版</div>\n\n') + body
     script = '\n<script src="script.js"></script>' if has_js else ""
     page = f"""<!doctype html>
 <html lang="en">
@@ -313,9 +423,9 @@ def main(argv=None):
         project = load_yaml(project_path)
         brand_dir = check_project_header(project)
         brand_cfg = load_yaml(brand_dir / "brand.yaml")
-        parts, css_files, js_files, ctx = render_blocks(project, brand_dir, brand_cfg, project_path.parent)
+        parts, css_files, js_files, ctx, multiple_count = render_blocks(project, brand_dir, brand_cfg, project_path.parent)
         out = Path(args.out).resolve() if args.out else REPO / "dist" / project["brand"] / str(project["project"])
-        write_output(out, project, brand_dir, brand_cfg, parts, css_files, js_files, ctx)
+        write_output(out, project, brand_dir, brand_cfg, parts, css_files, js_files, ctx, multiple_count)
     except BuildError as e:
         print(f"[錯誤] {e}", file=sys.stderr)
         return 1

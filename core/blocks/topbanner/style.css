@@ -66,3 +66,12 @@
   .topbanner__cta{flex-direction:column;}
   .topbanner__cta .btn{width:100%;flex:none;}
 }
+
+/* ---- 複數選擇（評審版）的切換鈕位置（切換鈕本身的樣式在 core/option-group/style.css） ----
+   Desktop：疊在媒體右下角，與文字區塊同層（不包在文字裡），相對 Topbanner：right 77px / bottom 36px。
+   Tablet/Mobile：不疊在媒體上，與標題同一列、靠右、垂直置中（兩個斷點共用同一個 --narrow 內容區塊）。 */
+@media (min-width:1025px){
+  .topbanner .option-toggle--overlay{display:inline-flex;position:absolute;right:77px;bottom:36px;z-index:3;}
+}
+.topbanner__heading-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;}
+.topbanner__heading-row h1{margin-bottom:0;}

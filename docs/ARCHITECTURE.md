@@ -67,7 +67,7 @@ segment: 2c                      # 只有 brand 為 pfcom 時必填：2c｜2b
 ### 專案檔格式
 
 ```yaml
-- id: topbanner
+- block: topbanner
   mode: multiple            # single（預設）｜multiple
   use: b                    # 只有 single 模式使用：採用哪一個候選
   options:                  # 候選內容，最多 a、b、c 三個；各自是一份完整的區塊內容
@@ -81,9 +81,19 @@ segment: 2c                      # 只有 brand 為 pfcom 時必填：2c｜2b
       # ...
 ```
 
-- `mode: single` 時只輸出 `use` 指定的那個候選，沒有切換按鈕。
-- `mode: multiple` 時輸出全部候選，按鈕順序為 a、b、c，預設顯示 a。
+- 區塊用 `block:` 指定（與一般區塊相同）；使用 `mode`／`options` 時，內容寫在各候選裡，外層只能有 `block`、`mode`、`use`、`options`。
+- `mode: single` 時只輸出 `use` 指定的那個候選，沒有切換按鈕，輸出和直接寫一般區塊**完全相同**（測試有驗證）；沒被採用的候選，素材不會輸出。
+- `mode: multiple` 時輸出全部候選，按鈕順序為 a、b、c，預設顯示 a；至少 2 個、最多 3 個；不需要 `use`。
 - 沒有多版本需求的區塊，不需要寫 `mode` 和 `options`，直接寫一份內容即可。
+- 範例：`core/blocks/topbanner/example.multiple.yaml`。
+
+### 實作方式（Phase 1b 已完成）
+
+- 外層容器 `.option-group[data-option-group][data-active="a"]`，每個候選一個 `.option-pane[data-option]`。**`data-active` 是唯一的狀態**，按鈕點擊只改它，CSS 屬性選擇器負責顯示與選中樣式。
+- 切換按鈕由 `core/option-group/` 提供，**每個候選各有自己的一組副本**（Desktop 疊在媒體右下角 `right:77px; bottom:36px`；Tablet/Mobile 與標題同列靠右、縮小 0.7727），位置由各區塊決定。要支援複數選擇的區塊，需宣告 `SUPPORTS_TOGGLE = True` 並讓 `render(content, ctx, toggle=None)` 接收切換鈕。目前只有 topbanner 支援。
+- 非顯示中的候選，其影片會暫停；切到該候選才播放。
+- 頁面含複數選擇區塊時，左下角固定顯示「評審版：含 N 個比較區塊，不是正式版」。
+- 區塊 HTML 不使用 `id`（同頁有多個候選，id 會重複）；互動腳本依 class 找元素。
 
 ### 切換按鈕樣式
 
@@ -94,11 +104,11 @@ segment: 2c                      # 只有 brand 為 pfcom 時必填：2c｜2b
 | 階段 | 內容 | 狀態 |
 |---|---|---|
 | Phase 0 | 建立 GitHub repo、資料夾骨架、命名規則 | 完成 |
-| Phase 1 | Topbanner 試做：欄位規格、區塊樣式、組裝腳本、自動驗證 | 進行中：規範與樣式已搬入、最小組裝腳本完成並與現有 YCO 頁面比對一致；待補：自動化測試、Slider |
-| Phase 1b | Topbanner 的多版本比較（單一選擇／複數選擇）：組裝腳本支援 `mode`／`options`，評審版切換按鈕 | Phase 1 之後 |
+| Phase 1 | Topbanner 試做：欄位規格、區塊樣式、組裝腳本、自動驗證 | 完成（Slider 除外）：規範與樣式已搬入、最小組裝腳本完成並與現有 YCO 頁面比對一致；自動化測試完成（42 項）；待補：Slider |
+| Phase 1b | Topbanner 的多版本比較（單一選擇／複數選擇）：組裝腳本支援 `mode`／`options`，評審版切換按鈕 | 完成（A/B 兩顆樣式；A/B/C 三顆的樣式待設計提供） |
 | Phase 2 | 先以 YCO 為主，擴充其餘區塊 | 待定 |
 | Phase 2b | 用同樣方式建立 PF.com：先做 2C 的 Topbanner，驗證 core/brands 切分是否合理 | YCO 確定後 |
-| Phase 3 | 表單頁：依規格產生欄位、圖片上傳、一鍵產出 | 待定 |
+| Phase 3 | 表單頁：依規格產生欄位、圖片上傳、一鍵產出 | 試做版完成（只有 Topbanner，欄位目前手寫；之後改由 `block.schema.json` 的 `x-ui` 自動產生）。多人使用的部署位置見 Phase 4 |
 | Phase 4 | 多人使用：部署位置、權限、素材儲存 | 待定 |
 
 ## 已知待決定的事項

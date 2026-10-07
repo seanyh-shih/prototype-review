@@ -15,6 +15,7 @@ Prototype builder for PF.com and YCO: block library, content data, assembler.
 ```
 prototype-system/
 ├─ core/                 共用層：兩個品牌都原樣使用的區塊與規則
+│  ├─ option-group/     複數選擇：切換鈕、容器、切換腳本
 │  └─ blocks/
 │     └─ topbanner/      區塊：欄位規格、共用樣式、HTML 產生器、各格式（variants/）的規範與樣式
 ├─ brands/               品牌層：各品牌專屬的樣式變數、素材
@@ -23,6 +24,8 @@ prototype-system/
 ├─ tools/
 │  ├─ build.py           組裝腳本
 │  └─ requirements.txt   需要的 Python 套件
+├─ app/                  後台（表單頁）：render.js、index.template.html、build_app.py、example-assets/
+├─ tests/                自動化測試（規格、組裝腳本、瀏覽器外觀與互動）
 ├─ docs/                 命名規則、架構說明、新舊流程並行規則
 └─ README.md
 ```
@@ -39,7 +42,27 @@ python tools/build.py <專案檔.yaml> [--out 輸出資料夾]
 
 專案檔最前面必須指定 `brand`（`yco` 或 `pfcom`），沒有預設值；格式見 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。素材路徑相對於專案檔所在的資料夾。不指定 `--out` 時輸出到 `dist/<品牌>/<專案名>/`。內容有問題時，腳本會用中文列出哪裡要修正。
 
-目前尚未支援：複數選擇（`mode`／`options`，Phase 1b）、Slider 格式、YCO 以外的品牌。
+複數選擇（評審版，頁面出現 A/B 切換鈕）的寫法見 `core/blocks/topbanner/example.multiple.yaml`。
+
+目前尚未支援：Slider 格式、YCO 以外的品牌、Topbanner 以外的區塊。
+
+## 後台（表單頁，Topbanner 試做）
+
+```
+python app/build_app.py      # 產生 app/dist/topbanner-form.html（單一檔案，用瀏覽器開啟）
+```
+
+選品牌 → 選單一／複數選擇 → 填標題內文、上傳素材 → 即時預覽 → 下載頁面（.html）或專案包（.zip，內含專案檔與素材，可再交給 `tools/build.py`）。後台內嵌的是區塊庫與品牌檔裡的同一份樣式和腳本，頁面產生邏輯 `app/render.js` 與 `tools/build.py` 的輸出由 `tests/test_app_render.py` 比對一致。目前只有 Topbanner，Slider 尚未開放。
+
+## 測試
+
+```
+pip install -r tests/requirements.txt
+playwright install chromium        # 瀏覽器測試需要
+python -m pytest tests
+```
+
+測試用合成素材（當場產生的小圖與假影片），不需要任何真實素材。內容：`test_schema.py`（欄位規格）、`test_build.py`（組裝腳本的錯誤訊息、輸出結構、覆蓋保護）、`test_topbanner.py`（在 Desktop／Tablet／Mobile 三種視窗檢查尺寸、字級、按鈕、圖片比例、把手與標籤、hover／拖曳／點擊互動、影片屬性）。已安裝 Chromium 但位置特殊時，設環境變數 `CHROMIUM_PATH`。改了區塊樣式或腳本後先跑一次，確認沒有改壞既有規範。
 
 ## 文件
 

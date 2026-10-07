@@ -8,6 +8,8 @@ css:
 # 放進頁面 <head> 的字體連結
 fonts:
   - https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap
+  # Inter：複數選擇的版本切換鈕使用
+  - https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap
 # 品牌共用素材：左邊是 brands/yco/assets/ 內的檔名，輸出頁面時會放在 assets/brand/
 assets:
   - b_a_sliderContainer.png

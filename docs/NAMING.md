@@ -38,6 +38,8 @@
 
 例：`topbanner-before-dt.jpg`、`topbanner-after-mb.jpg`、`topbanner-video-dt.mp4`、`topbanner-poster-dt.jpg`、`topbanner-slide-01-dt.jpg`
 
+複數選擇時，檔名在區塊名後加候選代號：`topbanner-a-before-dt.jpg`、`topbanner-b-video-mb.mp4`（避免不同候選的檔案撞名）。
+
 `slot` 依用途命名：`before`／`after`（拖曳比較）、`video`（一般格式的影片）、`poster`（影片搭配的圖片，封面）、`slide-01`／`slide-02`…（輪播，流水號兩位數）。
 
 ## 資料夾命名

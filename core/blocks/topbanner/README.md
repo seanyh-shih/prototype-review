@@ -11,7 +11,7 @@
 | `style.css` | 三種格式共用的版面與文字樣式（數值來自品牌檔的 `--topbanner-*` 變數） |
 | `render.py` | 依內容資料產生 HTML（組裝腳本呼叫） |
 | `variants/<格式>/` | 各格式專屬的規範（`spec.md`）、樣式（`style.css`）、互動腳本（`behavior.js`，目前只有 before-after 需要） |
-| `example*.yaml` | 範例內容 |
+| `example*.yaml` | 範例內容（`example.multiple.yaml` 是複數選擇／評審版的寫法） |
 
 ## 三種格式（variant）
 

@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Topbanner — before-after（拖曳比較）專屬樣式
+   來源：舊流程 DESIGN-RULES.md §5.10、現有頁面 style.css。
+
+   兩張照片疊在一起：
+   - .topbanner__img--before：Before 照片，底層，一直都在
+   - .topbanner__img--after ：After 照片，上層，被拖曳把手用 clip-path 裁切
+   （舊頁面的名稱剛好相反，--before 裝的是 After 照片，已在新系統更正，
+     舊對新對照見 spec.md）
+   ========================================================================== */
+.topbanner__img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+/* 預設從中間（50%）開始裁切；JS 會依把手位置更新 */
+.topbanner__img--after{clip-path:inset(0 0 0 50%);}
+
+/* ---- 拖曳把手 ----
+   把手容器沿用 Zig-zag 區塊已調校的寬度比例（6.5% / -3.25%）。把手圖用單一 <img>、
+   height:100% 讓瀏覽器依素材比例自動縮放；Desktop/Tablet/Mobile 三張把手圖尺寸比例不同，
+   不能共用同一張再縮放，所以用 display 依斷點切換。 */
+.topbanner__handle{
+  position:absolute;top:0;bottom:0;left:50%;width:6.5%;margin-left:-3.25%;
+  cursor:ew-resize;z-index:2;
+}
+.topbanner__handle-img{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  height:100%;width:auto;max-width:none;pointer-events:none;
+}
+.topbanner__handle-img--desktop{display:block;}
+.topbanner__handle-img--tablet,.topbanner__handle-img--mobile{display:none;}
+@media (max-width:1024px){
+  .topbanner__handle-img--desktop{display:none;}
+  .topbanner__handle-img--tablet{display:block;}
+}
+@media (max-width:768px){
+  .topbanner__handle-img--tablet{display:none;}
+  .topbanner__handle-img--mobile{display:block;}
+}
+
+/* ---- BEFORE / AFTER 文字標籤 ----
+   Desktop/Tablet 的把手圖已內建 BEFORE/AFTER 文字，Mobile 的沒有，
+   所以這兩個標籤只在 Mobile 顯示。直角矩形、左右貼齊邊緣（0px 留白）、
+   背景 rgba(0,0,0,.6)、文字白色 16px，刻意不設 font-weight（預設 400）。 */
+.topbanner__label{
+  display:none;position:absolute;top:16px;z-index:2;
+  font-family:'Roboto',sans-serif;font-size:16px;line-height:1;
+  color:#fff;background:rgba(0,0,0,.6);padding:8px 10px;border-radius:0;
+  pointer-events:none;
+}
+.topbanner__label--before{left:0;}
+.topbanner__label--after{right:0;}
+@media (max-width:768px){
+  .topbanner__label{display:block;}
+}

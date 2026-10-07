@@ -2,6 +2,17 @@
 
 頁面最上方的主視覺區塊。欄位規格見 [block.schema.json](block.schema.json)。
 
+## 資料夾內容
+
+| 檔案 | 內容 |
+|---|---|
+| `block.schema.json` | 欄位規格：有哪些欄位、必填與否、三種格式各自需要什麼 |
+| `SPEC.md` | 三種格式共用的規範：斷點、版面、文字、按鈕、素材尺寸、待確認事項 |
+| `style.css` | 三種格式共用的版面與文字樣式（數值來自品牌檔的 `--topbanner-*` 變數） |
+| `render.py` | 依內容資料產生 HTML（組裝腳本呼叫） |
+| `variants/<格式>/` | 各格式專屬的規範（`spec.md`）、樣式（`style.css`）、互動腳本（`behavior.js`，目前只有 before-after 需要） |
+| `example*.yaml` | 範例內容 |
+
 ## 三種格式（variant）
 
 依 Figma guideline，三種格式**互斥**：同一個 Topbanner 只會是其中一種。
@@ -10,7 +21,7 @@
 |---|---|---|---|---|
 | `standard` | 一般格式 | 背景是一支循環播放的影片，搭配一張圖片（封面），成對出現 | [example.standard-video.yaml](example.standard-video.yaml) | 影片版曾在 API_AI_Hair_Extension 實作過（原 V1）；素材尚未搬入新系統 |
 | `before-after` | 拖曳比較 | 兩張圖片，中間可拖曳。只能用圖片 | [example.yaml](example.yaml) | 已實作並驗證，現行 YCO 頁面使用中 |
-| `slider` | 圖片輪播 | 多組圖片自動輪播，只有 prompt 提示框文字會隨輪播改變 | [example.slider.yaml](example.slider.yaml) | 規格有，欄位為草稿，**尚未實測** |
+| `slider` | 圖片輪播 | 多組圖片自動輪播，只有 prompt 提示框文字會隨輪播改變 | [example.slider.yaml](example.slider.yaml) | 欄位規格與行為規範有，樣式與腳本**尚未實作** |
 
 `example.yaml` 因為建立時只有 before-after 一種，保留原檔名，內容是 before-after 的範例。
 

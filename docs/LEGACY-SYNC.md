@@ -19,5 +19,6 @@
 | 日期 | 內容 |
 |---|---|
 | 2026-10-07 | repo 建立，尚未從舊規範文件搬入任何規則 |
+| 2026-10-07 | 搬入 Topbanner：DESIGN-RULES §5.10（Before/After）、§5.11（一般格式／影片）、§5.1（Primary 按鈕）、§3 中 Topbanner 用到的色彩，以及 SECTIONS Section 01（三種格式）。YCO 的數值放在 `brands/yco/tokens.css`。與現有 YCO 頁面在 Desktop／Tablet／Mobile 三個寬度比對：計算樣式完全相同、拖曳互動相同，截圖差異僅在子像素等級。**新舊差異**：①Before/After 的 class 改為依照片內容命名（舊頁面 `--before` 裝的是 After 照片）；②Mobile 內文「最多 3 行」舊 CSS 沒有生效，新系統維持完整顯示，待與設計確認 |
 
 之後每次把舊文件的規則搬進新系統，在這裡加一列，寫明日期與搬了哪些區塊。

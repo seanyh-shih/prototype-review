@@ -93,8 +93,8 @@ segment: 2c                      # 只有 brand 為 pfcom 時必填：2c｜2b
 
 | 階段 | 內容 | 狀態 |
 |---|---|---|
-| Phase 0 | 建立 GitHub repo、資料夾骨架、命名規則 | 進行中 |
-| Phase 1 | Topbanner 試做：欄位規格、區塊樣式、組裝腳本、自動驗證 | 下一步 |
+| Phase 0 | 建立 GitHub repo、資料夾骨架、命名規則 | 完成 |
+| Phase 1 | Topbanner 試做：欄位規格、區塊樣式、組裝腳本、自動驗證 | 進行中：規範與樣式已搬入、最小組裝腳本完成並與現有 YCO 頁面比對一致；待補：自動化測試、Slider |
 | Phase 1b | Topbanner 的多版本比較（單一選擇／複數選擇）：組裝腳本支援 `mode`／`options`，評審版切換按鈕 | Phase 1 之後 |
 | Phase 2 | 先以 YCO 為主，擴充其餘區塊 | 待定 |
 | Phase 2b | 用同樣方式建立 PF.com：先做 2C 的 Topbanner，驗證 core/brands 切分是否合理 | YCO 確定後 |

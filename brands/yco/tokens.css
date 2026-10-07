@@ -1,0 +1,42 @@
+/* ==========================================================================
+   YCO 品牌變數（tokens）
+   來源：舊流程 YCO_product page_DESIGN-RULES.md 章節 3（色彩）、章節 5.1（按鈕）、
+   章節 5.10（Topbanner）；現有頁面 style.css 的 :root。
+   只搬 Topbanner 用得到的部分，其他區塊搬進來時再逐步增加。
+   ========================================================================== */
+:root{
+  /* ---- 色彩 ---- */
+  --brand: #03ade2;
+  --brand-hover: #039ecb;
+  --brand-press: #0389b0;
+  --text-strong: rgba(9,22,26,0.95);
+  --text-inverse: #ffffff;
+  --stroke-focus: rgba(3,173,226,0.2);
+  --bg-base: #ffffff;
+
+  /* ---- 字體與圓角 ---- */
+  --font-body: "Roboto", Arial, sans-serif;
+  --radius-btn: 32px;
+
+  /* ---- 版面 ---- */
+  /* 預設 header 高度。Topbanner 在 Desktop 的高度 = 100vh - 這個值；
+     之後做 header 區塊時，header 高度必須與此變數一致 */
+  --header-height: 64px;
+
+  /* ---- Topbanner ---- */
+  --topbanner-bg: #EDF8F9;                 /* 區塊底色；Tablet/Mobile 文字區塊也用同一個色 */
+  --topbanner-h1-size: 40px;               /* Desktop 與 Tablet 共用 */
+  --topbanner-h1-line: 48px;
+  --topbanner-h1-size-sm: 32px;            /* 只有 Mobile（≤768px）縮小 */
+  --topbanner-h1-line-sm: 40px;
+  --topbanner-p-size: 20px;                /* Desktop 與 Tablet 共用 */
+  --topbanner-p-line: 30px;
+  --topbanner-p-size-sm: 18px;             /* 只有 Mobile 縮小 */
+  --topbanner-p-line-sm: 26px;
+  --topbanner-inner-max: 440px;            /* 文字區塊寬度上限（基準，Mobile 使用） */
+  --topbanner-inner-max-desktop: 480px;
+  --topbanner-inner-max-tablet: 600px;
+  --topbanner-cta-height: 56px;            /* Desktop / Tablet 的按鈕高度；Mobile 沿用按鈕預設 42px */
+  --topbanner-cta-size: 20px;
+  --topbanner-cta-line: 28px;
+}

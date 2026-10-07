@@ -49,7 +49,7 @@
     },
     "ctas": {
       "title": "按鈕",
-      "description": "最多 2 個。第一個為主要按鈕。注意：Desktop 與 Mobile/Tablet 的 CTA 文案在某些專案不一樣（見 YCO DESIGN-RULES §5.11 的 CTA 文案陷阱），目前規格只支援一組文案，如需分裝置文案再擴充。",
+      "description": "最多 2 個。第一個為主要按鈕。Desktop / Tablet / Mobile 使用同一組文案；若設計稿上三個尺寸的文案不一致，優先懷疑是設計稿疏忽，與設計端確認（見 SPEC.md「提醒」）。",
       "type": "array",
       "maxItems": 2,
       "items": {

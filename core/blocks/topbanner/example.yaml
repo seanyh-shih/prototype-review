@@ -1,0 +1,31 @@
+# Topbanner 範例內容（對應現有 YCO「API_AI_Hair_Extension」頁面）
+# 欄位定義見同資料夾的 block.schema.json
+block: topbanner
+variant: before-after
+
+heading: "AI Hair Extension Virtual Try-On API"
+body: >-
+  Integrate highly realistic, AI-powered hair extension virtual try-ons into
+  your platform. Enable users to seamlessly preview customizable lengths,
+  styles, colors, and bangs on user-uploaded images via a streamlined REST API.
+
+ctas:
+  - label: "Contact Us"
+    href: "#"
+  - label: "API Documentation"
+    href: "#"
+
+images:
+  before:
+    dt: assets/topbanner-before-dt.jpg
+    pd: assets/topbanner-before-pd.jpg
+    mb: assets/topbanner-before-mb.jpg
+  after:
+    dt: assets/topbanner-after-dt.jpg
+    pd: assets/topbanner-after-pd.jpg
+    mb: assets/topbanner-after-mb.jpg
+
+# 以下為選填，不填則用預設值
+labels:
+  before: "BEFORE"
+  after: "AFTER"

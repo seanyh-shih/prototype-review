@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "topbanner",
+  "title": "Topbanner（頁首主視覺）",
+  "description": "頁面最上方的主視覺區塊。內容分兩部分：圖片區（Before/After 拖曳比較）與文字區（標題、說明、按鈕）。Desktop 文字疊在圖片右半，Tablet/Mobile 文字在圖片下方，兩種版面由組裝腳本用同一份內容產生，不需要填兩次。",
+  "type": "object",
+  "required": ["block", "variant", "heading", "body", "images"],
+  "additionalProperties": false,
+  "properties": {
+    "block": {
+      "const": "topbanner",
+      "description": "區塊 ID，固定值。"
+    },
+    "variant": {
+      "title": "呈現格式",
+      "description": "目前只有 before-after（圖片拖曳比較）。video（影片）已規劃，尚未實作。",
+      "enum": ["before-after"],
+      "default": "before-after",
+      "x-ui": { "widget": "select" }
+    },
+    "heading": {
+      "title": "主標題（H1）",
+      "type": "string",
+      "minLength": 1,
+      "x-ui": { "widget": "text", "group": "文案" }
+    },
+    "body": {
+      "title": "說明文字",
+      "type": "string",
+      "minLength": 1,
+      "x-ui": { "widget": "textarea", "group": "文案" }
+    },
+    "ctas": {
+      "title": "按鈕",
+      "description": "最多 2 個。第一個為主要按鈕。",
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["label", "href"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "title": "按鈕文字", "type": "string", "minLength": 1 },
+          "href": { "title": "連結", "type": "string", "default": "#" }
+        }
+      },
+      "x-ui": { "widget": "list", "group": "文案" }
+    },
+    "images": {
+      "title": "圖片",
+      "description": "Before 與 After 各需 Desktop / Tablet / Mobile 三個尺寸。",
+      "type": "object",
+      "required": ["before", "after"],
+      "additionalProperties": false,
+      "properties": {
+        "before": { "$ref": "#/$defs/deviceImages", "title": "Before 圖" },
+        "after": { "$ref": "#/$defs/deviceImages", "title": "After 圖" }
+      },
+      "x-ui": { "group": "圖片" }
+    },
+    "labels": {
+      "title": "Mobile 標籤文字",
+      "description": "只在 Mobile 顯示於圖片左上與右上角。Desktop/Tablet 的文字已內建在把手圖，不使用此欄位。",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "before": { "type": "string", "default": "BEFORE" },
+        "after": { "type": "string", "default": "AFTER" }
+      },
+      "x-ui": { "group": "進階" }
+    }
+  },
+  "$defs": {
+    "deviceImages": {
+      "type": "object",
+      "required": ["dt", "pd", "mb"],
+      "additionalProperties": false,
+      "properties": {
+        "dt": {
+          "title": "Desktop 圖",
+          "type": "string",
+          "description": "圖片檔路徑，建議命名 topbanner-{before|after}-dt.jpg",
+          "x-ui": { "widget": "image" }
+        },
+        "pd": {
+          "title": "Tablet 圖",
+          "type": "string",
+          "description": "圖片檔路徑，建議命名 topbanner-{before|after}-pd.jpg",
+          "x-ui": { "widget": "image" }
+        },
+        "mb": {
+          "title": "Mobile 圖",
+          "type": "string",
+          "description": "圖片檔路徑，建議命名 topbanner-{before|after}-mb.jpg",
+          "x-ui": { "widget": "image" }
+        }
+      }
+    }
+  },
+  "x-notes": [
+    "圖片尺寸與檔案大小規格待從 YCO_product page_DESIGN-RULES.md 搬入（Phase 1）。",
+    "拖曳把手圖、BEFORE/AFTER 內建文字屬於品牌素材，放在 brands/<品牌>/ 下，不是每個專案要填的內容。",
+    "x-ui 是給之後表單頁用的提示，不影響內容驗證。"
+  ]
+}

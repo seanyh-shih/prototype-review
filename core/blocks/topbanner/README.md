@@ -8,7 +8,7 @@
 
 | variant | 中文 | 說明 | 範例內容 | 狀態 |
 |---|---|---|---|---|
-| `standard` | 一般格式 | 背景是一張圖片，或一段循環播放的影片 | [example.standard-video.yaml](example.standard-video.yaml) | 影片版曾在 API_AI_Hair_Extension 實作過（原 V1）；素材尚未搬入新系統 |
+| `standard` | 一般格式 | 背景是一支循環播放的影片，搭配一張圖片（封面），成對出現 | [example.standard-video.yaml](example.standard-video.yaml) | 影片版曾在 API_AI_Hair_Extension 實作過（原 V1）；素材尚未搬入新系統 |
 | `before-after` | 拖曳比較 | 兩張圖片，中間可拖曳。只能用圖片 | [example.yaml](example.yaml) | 已實作並驗證，現行 YCO 頁面使用中 |
 | `slider` | 圖片輪播 | 多組圖片自動輪播，只有 prompt 提示框文字會隨輪播改變 | [example.slider.yaml](example.slider.yaml) | 規格有，欄位為草稿，**尚未實測** |
 
@@ -20,8 +20,7 @@
 
 | 表單下拉選項 | 每個尺寸要上傳 | 合計 | 文字輸入 |
 |---|---|---|---|
-| 一般格式（圖片） | 1 張圖片 | 3 個檔案 | 無額外 |
-| 一般格式（影片） | 1 支影片＋1 張封面圖 | 6 個檔案 | 無額外 |
+| 一般格式 | 1 支影片＋1 張圖片（封面） | 6 個檔案 | 無額外 |
 | Before/After | Before 圖＋After 圖 | 6 個檔案 | Mobile 標籤文字（選填，進階） |
 | Slider | 每組 1 張圖，預設 3 組，可用「＋」增加（不設上限） | 3 組 × 3 尺寸 = 9 個檔案起 | 每組 1 個 prompt 輸入框 |
 
@@ -30,7 +29,7 @@
 ## 表單頁選擇方式（規劃）
 
 1. 格式下拉選單三項：**一般格式、Before/After、Slider**。
-2. 選「一般格式」後，再選媒體類型：圖片或影片。影片需要封面圖。
+2. 「一般格式」固定為影片加圖片成對上傳，沒有「只放圖片」的選項（Figma guideline 原本允許，依實際使用情況簡化；之後若出現只有圖片的需求再擴充）。
 3. 上傳區排成表格，橫軸是裝置（Desktop／Tablet／Mobile），直軸是素材，一眼能看出缺哪一格。
 4. 在同一個版本裡換格式時，先前上傳的檔案保留、不輸出，換回去不用重傳。
 

@@ -7,7 +7,7 @@
 | 名詞 | 英文 | 意思 | 例子 |
 |---|---|---|---|
 | 區塊 | block | 頁面上的一個功能區 | `topbanner`、`faq-accordion` |
-| 變體 | variant | 同一個區塊的不同「呈現格式」，會出現在正式頁面上 | `topbanner` 的 `standard`（一般格式）、`before-after`、`slider` |
+| 變體 | variant | 同一個區塊的不同「呈現格式」，會出現在正式頁面上 | `topbanner` 的 `standard`（一般格式：影片＋圖片）、`before-after`、`slider` |
 | 選項（候選） | option | 內部用來比較評估的候選版本，代號用 `a`、`b`、`c`（最多 3 個），評估完會選定或淘汰，不是最終頁面的一部分 | 原本的 A/B Toggle |
 | 單一選擇／複數選擇 | single／multiple | 區塊的版本模式。單一選擇＝只有一個版本（正式版）；複數選擇＝2～3 個候選並出現切換按鈕（評審版）。這兩個名稱同時用在表單頁上 | 見 ARCHITECTURE.md |
 | 修訂 | revision | 檔案隨時間的修改紀錄，交給 Git 管，不寫進檔名 | commit 紀錄 |
@@ -36,9 +36,9 @@
 {block}-{slot}-{device}.{ext}
 ```
 
-例：`topbanner-before-dt.jpg`、`topbanner-after-mb.jpg`、`topbanner-media-dt.mp4`、`topbanner-poster-dt.jpg`、`topbanner-slide-01-dt.jpg`
+例：`topbanner-before-dt.jpg`、`topbanner-after-mb.jpg`、`topbanner-video-dt.mp4`、`topbanner-poster-dt.jpg`、`topbanner-slide-01-dt.jpg`
 
-`slot` 依用途命名：`before`／`after`（拖曳比較）、`media`（一般格式的圖片或影片）、`poster`（影片封面）、`slide-01`／`slide-02`…（輪播，流水號兩位數）。
+`slot` 依用途命名：`before`／`after`（拖曳比較）、`video`（一般格式的影片）、`poster`（影片搭配的圖片，封面）、`slide-01`／`slide-02`…（輪播，流水號兩位數）。
 
 ## 資料夾命名
 

@@ -1,4 +1,4 @@
-# Topbanner 格式 1：standard（一般格式），媒體類型為影片
+# Topbanner 格式 1：standard（一般格式）：影片＋圖片成對
 # 對應 API_AI_Hair_Extension 曾做過的影片版本（原 V1）。素材目前還在舊流程的專案資料夾，尚未搬進新系統。
 block: topbanner
 variant: standard
@@ -16,13 +16,12 @@ ctas:
     href: "#"
 
 media:
-  type: video          # 改成 image 就是「一般格式－圖片」，此時不需要 poster
   dt:
-    file: assets/topbanner-media-dt.mp4
+    video: assets/topbanner-video-dt.mp4
     poster: assets/topbanner-poster-dt.jpg
   pd:
-    file: assets/topbanner-media-pd.mp4
+    video: assets/topbanner-video-pd.mp4
     poster: assets/topbanner-poster-pd.jpg
   mb:
-    file: assets/topbanner-media-mb.mp4
+    video: assets/topbanner-video-mb.mp4
     poster: assets/topbanner-poster-mb.jpg

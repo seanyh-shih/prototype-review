@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Image Extender API — YCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__left">
+    <button class="header-hamburger" id="hamburgerBtn" aria-label="menu"><img src="assets/YCO/icons/mb_nav.png" alt=""></button>
+    <a href="#" class="site-header__logo">
+      <img class="logo-full" src="assets/YCO/logos/Logo.png" alt="YCO logo">
+      <img class="logo-icon-only" src="assets/YCO/logos/Logo symbol.png" alt="YCO logo">
+    </a>
+    <nav class="main-nav">
+      <div class="main-nav__item">
+        <a class="main-nav__link" href="#">Product
+          <img class="main-nav__chevron main-nav__chevron--close" src="assets/YCO/icons/Icon_close.svg" alt="">
+          <img class="main-nav__chevron main-nav__chevron--open" src="assets/YCO/icons/Icon_open.svg" alt="">
+        </a>
+        <div class="megamenu">
+          <div class="megamenu__inner">
+            <div class="megamenu__links">
+              <div class="megamenu__col megamenu__col--split">
+                <div class="megamenu__col-title"><img src="assets/YCO/icons/AI PHOTO EDITING_OL.svg" alt="">AI PHOTO EDITING</div>
+                <div class="megamenu__col-links">
+                  <div class="megamenu__sublinks">
+                    <a class="megamenu__link" href="#">AI Agent <span class="tag-new">NEW</span></a>
+                    <a class="megamenu__link" href="#">Photo Enhancer <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">Photo Repair <span class="tag-new">NEW</span></a>
+                    <a class="megamenu__link" href="#">AI Colorize</a>
+                    <a class="megamenu__link" href="#">AI Replace</a>
+                    <a class="megamenu__link" href="#">AI Image Extender <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">Image Converter</a>
+                    <a class="megamenu__link" href="#">Resize</a>
+                  </div>
+                  <div class="megamenu__sublinks">
+                    <a class="megamenu__link" href="#">AI Image Generator <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">Object Removal</a>
+                    <a class="megamenu__link" href="#">Remove Background <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">Effects <span class="tag-new">NEW</span></a>
+                    <a class="megamenu__link" href="#">Batch Photo Enhancer</a>
+                    <a class="megamenu__link" href="#">Batch Image Converter</a>
+                  </div>
+                </div>
+                <a class="megamenu__all" href="#">All Tools ›</a>
+              </div>
+              <div class="megamenu__col megamenu__col--split">
+                <div class="megamenu__col-title"><img src="assets/YCO/icons/AI PORTRAIT_OL.svg" alt="">AI PORTRAIT</div>
+                <div class="megamenu__col-links">
+                  <div class="megamenu__sublinks">
+                    <a class="megamenu__link" href="#">AI Hairstyle Generator <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">Body Reshape <span class="tag-new">NEW</span></a>
+                    <a class="megamenu__link" href="#">AI Face Reshape <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">AI Face Retouch</a>
+                    <a class="megamenu__link" href="#">AI Clothes <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                    <a class="megamenu__link" href="#">AI Face Swap</a>
+                    <a class="megamenu__link" href="#">AI Face Shape Detector</a>
+                    <a class="megamenu__link" href="#">AI Makeup Virtual Try On</a>
+                  </div>
+                  <div class="megamenu__sublinks">
+                    <a class="megamenu__link" href="#">AI Hair Color</a>
+                    <a class="megamenu__link" href="#">AI Makeup Transfer</a>
+                    <a class="megamenu__link" href="#">AI Headshot Generator</a>
+                    <a class="megamenu__link" href="#">AI Beard Generator</a>
+                    <a class="megamenu__link" href="#">AI Studio Generator</a>
+                    <a class="megamenu__link" href="#">AI Avatar Generator</a>
+                  </div>
+                </div>
+                <a class="megamenu__all" href="#">All Tools ›</a>
+              </div>
+              <div class="megamenu__col">
+                <div class="megamenu__col-title"><img src="assets/YCO/icons/AI VIDEO EDITING_OL.svg" alt="">AI VIDEO</div>
+                <a class="megamenu__link" href="#">Video Enhancer <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">Image to Video <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">Text to Video <span class="tag-new">NEW</span></a>
+                <a class="megamenu__link" href="#">Video Object Removal <span class="tag-new">NEW</span></a>
+                <a class="megamenu__link" href="#">AI Video Editor <span class="tag-new">NEW</span></a>
+                <a class="megamenu__link" href="#">Video Face Swap</a>
+                <a class="megamenu__link" href="#">Video Style Transfer</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-nav__item">
+        <a class="main-nav__link" href="#">Use Case
+          <img class="main-nav__chevron main-nav__chevron--close" src="assets/YCO/icons/Icon_close.svg" alt="">
+          <img class="main-nav__chevron main-nav__chevron--open" src="assets/YCO/icons/Icon_open.svg" alt="">
+        </a>
+        <div class="megamenu">
+          <div class="megamenu__inner">
+            <div class="megamenu__links">
+              <div class="megamenu__col">
+                <div class="megamenu__col-title"><img src="assets/YCO/icons/AI PHOTO EDITING_OL.svg" alt="">AI PHOTO EDITING</div>
+                <a class="megamenu__link" href="#">Animate Old Photos <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">Animate Photo</a>
+                <a class="megamenu__link" href="#">AI Watermark Remover</a>
+                <a class="megamenu__link" href="#">Unblur Image</a>
+                <a class="megamenu__link" href="#">Remove People from Photo <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__all" href="#">All Tools ›</a>
+              </div>
+              <div class="megamenu__col">
+                <div class="megamenu__col-title"><img src="assets/YCO/icons/AI PORTRAIT_OL.svg" alt="">AI PORTRAIT</div>
+                <a class="megamenu__link" href="#">Virtual Piercing Filter <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">AI Polaroid Filter</a>
+                <a class="megamenu__link" href="#">AI Outfit Changer <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">AI Bald Filter</a>
+                <a class="megamenu__all" href="#">All Tools ›</a>
+              </div>
+              <div class="megamenu__col">
+                <div class="megamenu__col-title"><img src="assets/YCO/icons/AI VIDEO EDITING_OL.svg" alt="">AI VIDEO</div>
+                <a class="megamenu__link" href="#">AI Hug Generator</a>
+                <a class="megamenu__link" href="#">AI Dance Generator <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">AI Fight Generator</a>
+                <a class="megamenu__link" href="#">4K AI Video Upscaler <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">AI Anime Video Filter <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+                <a class="megamenu__link" href="#">AI Fly Generator</a>
+                <a class="megamenu__all" href="#">All Tools ›</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-nav__item">
+        <a class="main-nav__link" href="#">Pricing</a>
+        <div class="pricing-drop">
+          <div class="pricing-drop__item"><img class="pricing-drop__check" src="assets/YCO/icons/icon-menu-pricing.svg" alt="">Download without watermark</div>
+          <div class="pricing-drop__item"><img class="pricing-drop__check" src="assets/YCO/icons/icon-menu-pricing.svg" alt="">Access to AI Photo Editing Tools</div>
+          <div class="pricing-drop__item"><img class="pricing-drop__check" src="assets/YCO/icons/icon-menu-pricing.svg" alt="">Unused credits roll over</div>
+          <a class="btn btn-primary" href="#">Get Credits Now</a>
+        </div>
+      </div>
+      <a class="main-nav__link" href="#" target="_blank">API <img class="btn-icon-lead" src="assets/YCO/icons/Icon_open_window.svg" alt="opens in new window"></a>
+    </nav>
+  </div>
+  <div class="site-header__right">
+    <button class="header-icon-btn header-icon-btn--premium"><img src="assets/YCO/icons/icon_premium.png" alt="premium"></button>
+    <button class="header-icon-btn header-icon-btn--edit"><img src="assets/YCO/icons/icon_editing.png" alt="editing"></button>
+    <a class="btn btn-outline" href="#"><img class="btn-icon-lead" src="assets/YCO/icons/dt_icon_editing.svg" alt="">Start Editing</a>
+    <a class="btn btn-primary" href="#">Log In / Sign Up</a>
+    <a class="btn btn-primary btn-primary--sm" href="#">Sign Up</a>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer__panel">
+    <div class="mobile-drawer__top">
+      <button class="mobile-drawer__close" id="drawerClose"><img src="assets/YCO/icons/mb_nav_close.png" alt="close"></button>
+      <div class="mobile-drawer__logo">
+        <img class="mobile-drawer__logo-badge" src="assets/YCO/logos/Logo symbol.png" alt="">
+        <img class="mobile-drawer__logo-word" src="assets/YCO/logos/mb_Logo.png" alt="YCO Online Editor">
+      </div>
+    </div>
+    <a class="mobile-drawer__login" href="#">Log in / Sign up</a>
+    <ul class="mobile-drawer__list">
+      <li class="mobile-drawer__item" data-submenu="product">Product <svg class="ic-chevron" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li class="mobile-drawer__item" data-submenu="usecase">Use Case <svg class="ic-chevron" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li class="mobile-drawer__item"><span style="display:flex;align-items:center;gap:8px;"><img src="assets/YCO/icons/icon_premium.png" alt="">Pricing</span></li>
+      <li class="mobile-drawer__item">API <img class="mobile-drawer__item-icon--open" src="assets/YCO/icons/Icon_open_window.svg" alt="opens in new window"></li>
+    </ul>
+
+    <div class="mobile-submenu" data-submenu-panel="product">
+      <div class="mobile-submenu__top">
+        <button class="mobile-submenu__back"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button> Product
+      </div>
+      <div class="mobile-submenu__body">
+        <div class="mobile-submenu__cat"><span class="mobile-submenu__cat-bar"></span>AI PHOTO EDITING</div>
+        <a class="mobile-submenu__link" href="#">AI Agent <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">Photo Enhancer <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Photo Repair <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">AI Colorize</a>
+        <a class="mobile-submenu__link" href="#">AI Replace</a>
+        <a class="mobile-submenu__link" href="#">AI Image Extender <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Image Converter</a>
+        <a class="mobile-submenu__link" href="#">Resize</a>
+        <a class="mobile-submenu__link" href="#">AI Image Generator <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Object Removal</a>
+        <a class="mobile-submenu__link" href="#">Remove Background <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Effects <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">Batch Photo Enhancer</a>
+        <a class="mobile-submenu__link" href="#">Batch Image Converter</a>
+        <a class="mobile-submenu__all" href="#">All Tools ›</a>
+        <div class="mobile-submenu__cat"><span class="mobile-submenu__cat-bar"></span>AI PORTRAIT</div>
+        <a class="mobile-submenu__link" href="#">AI Hairstyle Generator <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Body Reshape <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">AI Face Reshape <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Face Retouch</a>
+        <a class="mobile-submenu__link" href="#">AI Clothes <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Face Swap</a>
+        <a class="mobile-submenu__link" href="#">AI Face Shape Detector</a>
+        <a class="mobile-submenu__link" href="#">AI Makeup Virtual Try On</a>
+        <a class="mobile-submenu__link" href="#">AI Hair Color</a>
+        <a class="mobile-submenu__link" href="#">AI Makeup Transfer</a>
+        <a class="mobile-submenu__link" href="#">AI Headshot Generator</a>
+        <a class="mobile-submenu__link" href="#">AI Beard Generator</a>
+        <a class="mobile-submenu__link" href="#">AI Studio Generator</a>
+        <a class="mobile-submenu__link" href="#">AI Avatar Generator</a>
+        <a class="mobile-submenu__all" href="#">All Tools ›</a>
+        <div class="mobile-submenu__cat"><span class="mobile-submenu__cat-bar"></span>AI VIDEO</div>
+        <a class="mobile-submenu__link" href="#">Video Enhancer <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Image to Video <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Text to Video <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">Video Object Removal <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">AI Video Editor <span class="tag-new">NEW</span></a>
+        <a class="mobile-submenu__link" href="#">Video Face Swap</a>
+        <a class="mobile-submenu__link" href="#">Video Style Transfer</a>
+      </div>
+    </div>
+    <div class="mobile-submenu" data-submenu-panel="usecase">
+      <div class="mobile-submenu__top">
+        <button class="mobile-submenu__back"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button> Use Case
+      </div>
+      <div class="mobile-submenu__body">
+        <div class="mobile-submenu__cat"><span class="mobile-submenu__cat-bar"></span>AI PHOTO EDITING</div>
+        <a class="mobile-submenu__link" href="#">Animate Old Photos <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">Animate Photo</a>
+        <a class="mobile-submenu__link" href="#">AI Watermark Remover</a>
+        <a class="mobile-submenu__link" href="#">Unblur Image</a>
+        <a class="mobile-submenu__link" href="#">Remove People from Photo <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__all" href="#">All Tools ›</a>
+        <div class="mobile-submenu__cat"><span class="mobile-submenu__cat-bar"></span>AI PORTRAIT</div>
+        <a class="mobile-submenu__link" href="#">Virtual Piercing Filter <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Polaroid Filter</a>
+        <a class="mobile-submenu__link" href="#">AI Outfit Changer <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Bald Filter</a>
+        <a class="mobile-submenu__all" href="#">All Tools ›</a>
+        <div class="mobile-submenu__cat"><span class="mobile-submenu__cat-bar"></span>AI VIDEO</div>
+        <a class="mobile-submenu__link" href="#">AI Hug Generator</a>
+        <a class="mobile-submenu__link" href="#">AI Dance Generator <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Fight Generator</a>
+        <a class="mobile-submenu__link" href="#">4K AI Video Upscaler <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Anime Video Filter <img class="tag-hot" src="assets/YCO/icons/hot.gif" alt="HOT"></a>
+        <a class="mobile-submenu__link" href="#">AI Fly Generator</a>
+        <a class="mobile-submenu__all" href="#">All Tools ›</a>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+
+<section class="topbanner" id="topbanner" data-topbanner-variant="a">
+  <div class="topbanner__media" id="topbannerMedia">
+    <video class="topbanner__video topbanner__video--dt" autoplay loop muted playsinline poster="assets/project/topbanner/API_img_extender_top_Banner_Prototype-A.jpg" data-poster-a="assets/project/topbanner/API_img_extender_top_Banner_Prototype-A.jpg" data-poster-b="assets/project/topbanner/API_img_extender_top_Banner_Prototype-B.jpg" data-poster-c="assets/project/topbanner/API_img_extender_top_Banner_Prototype-C.jpg"><source src="assets/project/topbanner/API_img_extender_top_Banner_Prototype-A.mp4" type="video/mp4" data-src-a="assets/project/topbanner/API_img_extender_top_Banner_Prototype-A.mp4" data-src-b="assets/project/topbanner/API_img_extender_top_Banner_Prototype-B.mp4" data-src-c="assets/project/topbanner/API_img_extender_top_Banner_Prototype-C.mp4"></video>
+    <video class="topbanner__video topbanner__video--pd" autoplay loop muted playsinline poster="assets/project/topbanner/API_img_extender_top_banner_pd-A.jpg" data-poster-a="assets/project/topbanner/API_img_extender_top_banner_pd-A.jpg" data-poster-b="assets/project/topbanner/API_img_extender_top_banner_pd-B.jpg" data-poster-c="assets/project/topbanner/API_img_extender_top_banner_pd-C.jpg"><source src="assets/project/topbanner/API_img_extender_top_banner_pd-A.mp4" type="video/mp4" data-src-a="assets/project/topbanner/API_img_extender_top_banner_pd-A.mp4" data-src-b="assets/project/topbanner/API_img_extender_top_banner_pd-B.mp4" data-src-c="assets/project/topbanner/API_img_extender_top_banner_pd-C.mp4"></video>
+    <video class="topbanner__video topbanner__video--mb" autoplay loop muted playsinline poster="assets/project/topbanner/API_img_extender_top_banner_mb-A.jpg" data-poster-a="assets/project/topbanner/API_img_extender_top_banner_mb-A.jpg" data-poster-b="assets/project/topbanner/API_img_extender_top_banner_mb-B.jpg" data-poster-c="assets/project/topbanner/API_img_extender_top_banner_mb-C.jpg"><source src="assets/project/topbanner/API_img_extender_top_banner_mb-A.mp4" type="video/mp4" data-src-a="assets/project/topbanner/API_img_extender_top_banner_mb-A.mp4" data-src-b="assets/project/topbanner/API_img_extender_top_banner_mb-B.mp4" data-src-c="assets/project/topbanner/API_img_extender_top_banner_mb-C.mp4"></video>
+    <div class="topbanner__toggle" role="group" aria-label="Topbanner version"><button type="button" class="topbanner__toggle-option topbanner__toggle-option--a" data-variant="a" aria-pressed="true">A</button><button type="button" class="topbanner__toggle-option topbanner__toggle-option--b" data-variant="b" aria-pressed="false">B</button><button type="button" class="topbanner__toggle-option topbanner__toggle-option--c" data-variant="c" aria-pressed="false">C</button></div>
+  </div>
+  <div class="topbanner__content topbanner__content--desktop">
+    <div class="topbanner__inner">
+      <h1>AI Image Extender API</h1>
+      <p>Expand any photo into a new aspect ratio with AI outpainting that matches the original scene, for design teams, creative operations, and e-commerce catalog managers.</p>
+      <div class="topbanner__cta">
+        <a class="btn btn-primary" href="#">Free API Key</a>
+        <a class="btn btn-primary" href="#">API Documentation</a>
+      </div>
+    </div>
+  </div>
+  <div class="topbanner__content topbanner__content--narrow">
+    <div class="topbanner__inner">
+      <h1>AI Image Extender API</h1>
+      <p>Expand any photo into a new aspect ratio with AI outpainting that matches the original scene, for design teams, creative operations, and e-commerce catalog managers.</p>
+      <div class="topbanner__cta">
+        <a class="btn btn-primary" href="#">Free API Key</a>
+        <a class="btn btn-primary" href="#">API Documentation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0;">
+  <div class="container">
+    <h2 class="section-title mb-left" style="margin-bottom:16px;">One Outpainting API for Every Aspect Ratio</h2>
+    <p class="intro-text mb-left">The AI Image Extender API is an image outpainting service that expands a source photo into a larger frame by generating new, context aware content around it. A single REST call returns a seamlessly extended image at up to 4K. Teams use it to reframe one asset for every channel without a reshoot.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="zigzag-row">
+      <div class="zigzag-row__media"><video autoplay loop muted playsinline poster="assets/project/UseCase/API_img_extender_01-0.jpg"><source src="assets/project/UseCase/API_img_extender_01.mp4" type="video/mp4"></video></div>
+      <div class="zigzag-row__text">
+        <h3>Reframe Any Photo in Any Size</h3>
+        <p>The API fills the new space with generated content that matches the original scene.</p>
+        <ul>
+          <li>Generate the whole format set from a single picture</li>
+          <li>Position the original anywhere in the frame and extend one side, two sides, or all four</li>
+          <li>Get a finished, ready-to-publish image with no manual retouching step</li>
+        </ul>
+        <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">API Documentation</a></div>
+      </div>
+    </div>
+
+    <div class="zigzag-row zigzag-row--rev">
+      <div class="zigzag-row__media"><video autoplay loop muted playsinline poster="assets/project/UseCase/API_img_extender_02-0.jpg"><source src="assets/project/UseCase/API_img_extender_02.mp4" type="video/mp4"></video></div>
+      <div class="zigzag-row__text">
+        <h3>Hyper Realistic Results That Match the Original Scene</h3>
+        <p>Context aware generation continues lighting, texture, and background so the join stays invisible.</p>
+        <ul>
+          <li>Generated areas blend with the colors and detail of the source photo</li>
+          <li>The original keeps its style and aesthetic across the wider frame</li>
+          <li>Campaign-grade output that holds up at full resolution on every placement</li>
+        </ul>
+        <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">API Documentation</a></div>
+      </div>
+    </div>
+
+    <div class="zigzag-row">
+      <div class="zigzag-row__media"><video autoplay loop muted playsinline poster="assets/project/UseCase/API_img_extender_03-0.jpg"><source src="assets/project/UseCase/API_img_extender_03.mp4" type="video/mp4"></video></div>
+      <div class="zigzag-row__text">
+        <h3>Save Time and Budget on Every Campaign</h3>
+        <p>Every asset you already own becomes a full set of channel-ready images, for the price of an API call.</p>
+        <ul>
+          <li>Keep production costs predictable with a clear per-image price</li>
+          <li>Ship seasonal and regional variants the same day they are briefed</li>
+          <li>Grow creative output with the assets you already have</li>
+        </ul>
+        <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">Contact Us</a></div>
+      </div>
+    </div>
+
+    <div class="zigzag-row zigzag-row--rev">
+      <div class="zigzag-row__media"><img src="assets/project/UseCase/API_img_extender_S04.png" alt="Image Extender API Integration Built for Production"></div>
+      <div class="zigzag-row__text">
+        <h3>Image Extender API Integration Built for Production</h3>
+        <p>Image extension slots into the pipeline your team already runs, and scales with you as your volume grows.</p>
+        <ul>
+          <li>A simple REST API workflow gets it live in your product within a single sprint</li>
+          <li>One API key opens the full YouCam API suite, image extension included</li>
+          <li>Works from any stack, including low-code and AI-assisted tools such as Lovable, Bubble, and FlutterFlow for fast vibe coding prototypes</li>
+        </ul>
+        <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">Get Your Free API Key</a></div>
+      </div>
+    </div>
+
+    <div class="zigzag-row">
+            <div class="zigzag-row__media">
+        <div class="zz-ba">
+          <img class="zz-ba__img" src="assets/project/UseCase/API_img_extender_S05-Before.jpg" alt="Before">
+          <img class="zz-ba__img zz-ba__img--before" src="assets/project/UseCase/API_img_extender_S05-After.jpg" alt="After">
+          <div class="zz-ba__handle">
+            <img class="zz-ba__handle-img" src="assets/YCO/icons/b_a_sliderContainer_small.png" alt="drag to compare">
+          </div>
+        </div>
+      </div>
+      <div class="zigzag-row__text">
+        <h3>Built for Enterprise Trust With Safe On-Brand Results</h3>
+        <p>Every extension runs through the safeguards your brand and legal teams expect.</p>
+        <ul>
+          <li>Built-in content safety screening keeps generated output appropriate for commercial use</li>
+          <li>Generated areas continue the original scene, so every result stays on brand</li>
+          <li>Runs on an ISO/IEC 27001:2022 certified platform with GDPR-aligned data handling</li>
+        </ul>
+        <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">Contact Us</a></div>
+      </div>
+    </div>
+
+    <div class="zigzag-row zigzag-row--rev">
+      <div class="zigzag-row__media"><img src="assets/project/UseCase/API_img_extender_S06.jpg" alt="Call the AI Image Extender API From Any MCP Client"></div>
+      <div class="zigzag-row__text">
+        <h3>Call the AI Image Extender API From Any MCP Client</h3>
+        <p>The API is exposed through the YouCam MCP servers, so AI assistants and agents can run image expansion directly.</p>
+        <ul>
+          <li>AI Image Extender ships as a tool on the YouCam creators MCP server</li>
+          <li>Works with Claude, Cursor, Copilot in VS Code, and other MCP clients</li>
+          <li>Uses the same API key and Bearer token, so there is no second credential to manage</li>
+        </ul>
+        <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">MCP Documentation</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="advcards-section advcards-section--white">
+  <div class="container container--wide">
+    <h2 class="section-title mb-left" style="margin-bottom:50px;">Where Enterprise Teams Put the Image Extender API to Work</h2>
+    <div class="advcards">
+      <div class="advcards__card">
+        <div class="advcards__media"><img src="assets/project/UseCase/API_img_extender_S07.jpg" alt="E-commerce Catalogs"></div>
+        <h3>E-commerce Catalogs</h3>
+        <p>Fit supplier photos to one catalog ratio without cropping the product.</p>
+        <a class="advcards__learnmore" href="#">GET YOUR FREE API KEY <img src="assets/YCO/icons/icon_arrow.png" alt=""></a>
+      </div>
+      <div class="advcards__card">
+        <div class="advcards__media"><img src="assets/project/UseCase/API_img_extender_S08.jpg" alt="Social and Ad Creative"></div>
+        <h3>Social and Ad Creative</h3>
+        <p>Adapt one campaign visual to every platform ratio in a single pipeline.</p>
+        <a class="advcards__learnmore" href="#">GET YOUR FREE API KEY <img src="assets/YCO/icons/icon_arrow.png" alt=""></a>
+      </div>
+      <div class="advcards__card">
+        <div class="advcards__media"><img src="assets/project/UseCase/API_img_extender_S09.jpg" alt="User Upload Flows"></div>
+        <h3>User Upload Flows</h3>
+        <p>Extend customer photos to fit templates, frames, and print layouts automatically.</p>
+        <a class="advcards__learnmore" href="#">GET YOUR FREE API KEY <img src="assets/YCO/icons/icon_arrow.png" alt=""></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--step-bg">
+  <div class="container container--step">
+    <h2 class="section-title" style="margin-bottom:8px;">How to Use the AI Image Extender API</h2>
+    <p class="step-subtitle">Three steps take you from a source photo to a finished, extended image.</p>
+    <div class="step-list">
+      <div class="step-item">
+        <img class="step-illustration" src="assets/project/UseCase/API_img_extender_ico_step_01.png" alt="Step 1">
+        <div class="step-item__body">
+          <div class="step-item__label">STEP <b>1</b></div>
+          <h4>Add Your Image</h4>
+          <p>Pass a publicly accessible image URL, or upload the file and use the returned file ID.</p>
+        </div>
+      </div>
+      <div class="step-arrow" aria-hidden="true"><svg width="31" height="23" viewBox="0 0 31 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31 10.0817L31 4L15.5 16.9183L1.03466e-06 4L7.6882e-07 10.0817L15.5 23L31 10.0817Z" fill="currentColor"/></svg></div>
+      <div class="step-item">
+        <img class="step-illustration" src="assets/project/UseCase/API_img_extender_ico_step_02.png" alt="Step 2">
+        <div class="step-item__body">
+          <div class="step-item__label">STEP <b>2</b></div>
+          <h4>Set the Output</h4>
+          <p>Send your target size and where the original should sit to start the task.</p>
+        </div>
+      </div>
+      <div class="step-arrow" aria-hidden="true"><svg width="31" height="23" viewBox="0 0 31 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31 10.0817L31 4L15.5 16.9183L1.03466e-06 4L7.6882e-07 10.0817L15.5 23L31 10.0817Z" fill="currentColor"/></svg></div>
+      <div class="step-item">
+        <img class="step-illustration" src="assets/project/UseCase/API_img_extender_ico_step_03.png" alt="Step 3">
+        <div class="step-item__body">
+          <div class="step-item__label">STEP <b>3</b></div>
+          <h4>Collect the Result</h4>
+          <p>Check the task until it reports success, then download the finished extended image.</p>
+        </div>
+      </div>
+    </div>
+    <div class="step-cta"><a class="step-cta__link" href="#">API Documentation<img class="step-cta__icon" src="assets/YCO/icons/icon_arrow.png" alt=""></a></div>
+  </div>
+</section>
+
+<section class="logowall-section">
+  <div class="container container--wide">
+    <h2 class="section-title mb-left">AI Image Extender API Supports All Major Frameworks</h2>
+    <p class="logowall-intro mb-left">Call the API from the stack you already run, or connect through the YouCam MCP servers, using the code snippets in the documentation.</p>
+    <div class="logowall">
+      <div class="logowall__card">
+        <div class="logowall__media"><img src="assets/YCO/illustrations/img_JavaScript.jpg" alt="JavaScript &amp; Java"></div>
+        <div class="logowall__label">JavaScript &amp; Java</div>
+      </div>
+      <div class="logowall__card">
+        <div class="logowall__media"><img src="assets/YCO/illustrations/img_Flutter.jpg" alt="Flutter"></div>
+        <div class="logowall__label">Flutter</div>
+      </div>
+      <div class="logowall__card">
+        <div class="logowall__media"><img src="assets/YCO/illustrations/img_Python.jpg" alt="Python"></div>
+        <div class="logowall__label">Python</div>
+      </div>
+      <div class="logowall__card">
+        <div class="logowall__media"><img src="assets/YCO/illustrations/img_PHP.jpg" alt="PHP"></div>
+        <div class="logowall__label">PHP</div>
+      </div>
+      <div class="logowall__card">
+        <div class="logowall__media"><img src="assets/YCO/illustrations/img_Node_js.jpg" alt="Node.js"></div>
+        <div class="logowall__label">Node.js</div>
+      </div>
+      <div class="logowall__card">
+        <div class="logowall__media"><img src="assets/YCO/illustrations/img_curl.jpg" alt="curl"></div>
+        <div class="logowall__label">curl</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--wide">
+    <div class="ecosystem-intro mb-left">
+      <h2 class="section-title mb-left">Part of the Perfect Corp. AI &amp; AR Ecosystem for Image and Video Editing</h2>
+      <p>More than a decade of AI and AR development, trusted by over 800 brand partners worldwide. The AI Image Extender API runs on the same infrastructure as a full suite of YouCam image and video editing APIs.</p>
+    </div>
+  </div>
+  <div class="container pricing-wrap">
+    <div class="zigzag-row zigzag-row--rev">
+        <div class="zigzag-row__media">
+          <div class="zz-ba">
+            <img class="zz-ba__img" src="assets/project/UseCase/API_img_extender_S10-Before.jpg" alt="Before">
+            <img class="zz-ba__img zz-ba__img--before" src="assets/project/UseCase/API_img_extender_S10-After.jpg" alt="After">
+            <div class="zz-ba__handle">
+              <img class="zz-ba__handle-img" src="assets/YCO/icons/b_a_sliderContainer_small.png" alt="drag to compare">
+            </div>
+          </div>
+        </div>
+        <div class="zigzag-row__text">
+          <h3>Flexible API Plans for Every Scale</h3>
+          <p>Start free and test on real images, then move to a plan that matches your production volume.</p>
+          <ul>
+            <li>Get a free API key when you sign up, with no commitment</li>
+            <li>Free credits included so you can test on your own images first</li>
+            <li>Plans scale from pilot projects through enterprise production volume</li>
+          </ul>
+          <div class="zigzag-row__cta"><a class="btn btn-outline btn-outline--sm" href="#">API Pricing</a></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq">
+  <div class="container">
+    <h2 class="section-title mb-left">AI Image Extender API FAQs</h2>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item is-open">
+        <button class="faq-item__q"><span>What is the AI Image Extender API?</span><img src="assets/YCO/icons/Icon_open.svg" alt=""></button>
+        <div class="faq-item__a"><p>It is an outpainting API that expands a source photo into a larger frame by generating new content around it. You supply the source image, where it should sit in the finished frame, and the output size you want. The service returns a single extended image where the generated areas blend with the original scene.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>How do I send a source image to the API?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>You have two options. Pass a publicly accessible image URL in the request, or upload the file first and reference the file ID that upload returns. Both routes reach the same endpoint, so you can pick whichever fits your storage setup.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>How do I control where the original sits in the extended image?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>You set the placement of the source inside the finished frame, along with the size at which it renders. That lets you extend on one side, two sides, or all four from a single request. Shifting the placement is how you turn the same source photo into a left-weighted banner, a centered square, or a tall vertical.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>Can I crop the source image in the same request?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>Yes. You can select the region of the source you want to carry forward, and the API builds the new frame around that region. This keeps cropping and extending together in one call and removes a separate crop step from your pipeline.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>What output sizes does the API support?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>You can set the output width and height independently, up to 4K on each side. That covers portrait to landscape, square to widescreen, and fully custom ratios for a specific placement. One source photo can therefore serve every channel you publish to.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>Is the API available through MCP?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>Yes. AI Image Extender ships as a tool on the YouCam creators MCP server, so AI assistants and agents can run image expansion directly. It works with Claude, Cursor, Copilot in VS Code, and other MCP clients, and it uses the same API key and Bearer token as the REST API.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>How does the API keep generated output brand safe?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>Built-in content safety screening keeps generated output appropriate for commercial use. Generation is context aware, so the API continues the original scene lighting, texture, and background rather than inventing new subjects. The platform is ISO/IEC 27001:2022 certified and data handling follows GDPR principles.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q"><span>Can I try the API before choosing a plan?</span><img src="assets/YCO/icons/Icon_close.svg" alt=""></button>
+        <div class="faq-item__a"><p>Yes. Signing up gives you a free API key plus free credits, so you can run the endpoint against your own images before choosing a plan. That is enough to validate output quality and framing behavior on real assets. See the API pricing page when you are ready to scale.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <div class="site-footer__brand-info">
+        <img class="site-footer__logo" src="assets/YCO/logos/Logo_footer.png" alt="YCO">
+        <small id="copyright"></small>
+      </div>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch__btn" id="langBtn" aria-label="Language: English">
+          <img src="assets/YCO/icons/ico_language.png" alt="">
+          <svg class="lang-switch__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6.5 9.5L12 15L17.5 9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="visually-hidden">English</span>
+        </button>
+        <div class="lang-switch__list">
+          <button>English</button><button>正體中文</button><button>日本語</button><button>한국어</button>
+          <button>Deutsch</button><button>Français</button><button>Español</button><button>简体中文</button>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__cols">
+      <div class="site-footer__col">
+        <h4>Product</h4>
+        <a href="#">Photo Enhance</a><a href="#">AI Hair</a><a href="#">AI Replace</a><a href="#">AI Headshot</a>
+      </div>
+      <div class="site-footer__col">
+        <h4>Support</h4>
+        <a href="#">Pricing</a><a href="#">Blogs</a><a href="#">FAQ</a><a href="#">Affiliate Program</a>
+      </div>
+      <div class="site-footer__col">
+        <h4>Legal</h4>
+        <a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Legal notice</a>
+      </div>
+      <div class="site-footer__col">
+        <h4>API</h4>
+        <a class="site-footer__col-link--icon" href="#" target="_blank">API Platform
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 9.5V2.5C1 2.10218 1.15815 1.72076 1.43945 1.43945C1.72076 1.15815 2.10218 1 2.5 1H5.5C5.77614 1 6 1.22386 6 1.5C6 1.77614 5.77614 2 5.5 2H2.5C2.36739 2 2.24025 2.05272 2.14648 2.14648C2.05272 2.24025 2 2.36739 2 2.5V9.5C2 9.63261 2.05272 9.75975 2.14648 9.85352C2.24025 9.94728 2.36739 10 2.5 10H9.5C9.63261 10 9.75975 9.94728 9.85352 9.85352C9.94728 9.75975 10 9.63261 10 9.5V6.5C10 6.22386 10.2239 6 10.5 6C10.7761 6 11 6.22386 11 6.5V9.5C11 9.89783 10.8419 10.2792 10.5605 10.5605C10.2792 10.8419 9.89783 11 9.5 11H2.5C2.10218 11 1.72076 10.8419 1.43945 10.5605C1.15815 10.2792 1 9.89782 1 9.5ZM11 4.5C11 4.77614 10.7761 5 10.5 5C10.2239 5 10 4.77614 10 4.5V2.70703L6.35352 6.35352C6.15825 6.54878 5.84175 6.54878 5.64648 6.35352C5.45122 6.15825 5.45122 5.84175 5.64648 5.64648L9.29297 2H7.5C7.22386 2 7 1.77614 7 1.5C7 1.22386 7.22386 1 7.5 1H10.5C10.7761 1 11 1.22386 11 1.5V4.5Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

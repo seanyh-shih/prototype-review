@@ -235,7 +235,7 @@ ul{padding:0;list-style:none;}
   .topbanner__cta .btn{height:56px;padding:0 24px;font-size:20px;line-height:28px;}
 }
 @media (min-width:1025px){
-  .topbanner__media{aspect-ratio:2880/1254;width:100%;min-height:580px;}
+  .topbanner__media{aspect-ratio:2880/1254;width:100%;min-height:544px;}
   .topbanner__content--desktop{
     display:flex;position:absolute;top:0;bottom:0;right:0;width:50%;
     align-items:center;justify-content:center;padding:0 60px;
@@ -320,7 +320,6 @@ ul{padding:0;list-style:none;}
 }
 .step-title{margin-bottom:60px;}
 @media (max-width:768px){ .step-title{margin-bottom:40px;} }
-.step-item img.step-illustration{mix-blend-mode:multiply;}
 .step-subtitle{text-align:center;color:var(--text-strong);font-size:24px;line-height:38px;font-weight:400;margin:16px 0 60px;}
 @media (max-width:768px){ .step-subtitle{font-size:18px;line-height:26px;} }
 .step-list{display:flex;justify-content:center;gap:39px;}

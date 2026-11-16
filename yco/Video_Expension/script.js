@@ -60,6 +60,35 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   
+  var tbSection = document.getElementById('topbanner');
+  if (tbSection) {
+    var tbButtons = tbSection.querySelectorAll('.topbanner__toggle-option');
+    var tbVideos = tbSection.querySelectorAll('.topbanner__video--dt');
+    var setTopbannerVariant = function (v) {
+      tbSection.setAttribute('data-topbanner-variant', v);
+      tbButtons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-variant') === v ? 'true' : 'false');
+      });
+      tbVideos.forEach(function (video) {
+        var poster = video.getAttribute('data-poster-' + v);
+        var source = video.querySelector('source');
+        var src = source ? source.getAttribute('data-src-' + v) : null;
+        if (poster) video.setAttribute('poster', poster);
+        if (source && src) source.setAttribute('src', src);
+        video.load();
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+      });
+    };
+    tbButtons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = b.getAttribute('data-variant');
+        if (v && v !== tbSection.getAttribute('data-topbanner-variant')) setTopbannerVariant(v);
+      });
+    });
+  }
+
+  
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function (item) {
     var q = item.querySelector('.faq-item__q');
